@@ -43,7 +43,7 @@ def main():
         mislabelled_cells.append(list(vset.difference(set(inv_map_ref[group_relabel[k]]))))
 
     if remove_cells:
-        gn.add_result("Dropping {} mislabelled cells".format(len(mislabelled)), "markdown")
+        gn.add_result("Dropping {} mislabelled cells".format(len(mislabelled_cells)), "markdown")
         assay = assay.drop(mislabelled_cells, axis=1)
         groups = {key:val for key, val in groups.items() if val != ds}
 
