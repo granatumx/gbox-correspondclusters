@@ -16,7 +16,7 @@ frontend:
       injectInto: remove_cells
       default: false
       label: Remove cells that were mislabeled
-      description: > Sometimes cells are not labeled correctly
+      description: Sometimes cells are not labeled correctly
   exports:
     - kind: assay
       meta: {}
