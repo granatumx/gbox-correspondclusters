@@ -45,7 +45,7 @@ def main():
     if remove_cells:
         gn.add_result("Dropping {} mislabelled cells".format(len(mislabelled_cells)), "markdown")
         assay = assay.drop(mislabelled_cells, axis=1)
-        groups = {key:val for key, val in groups.items() if val != ds}
+        groups = {key:val for key, val in groups.items() if not key in mislablled_cells}
 
     for cell in groups:
         groups[cell] = group_relabel[groups[cell]]
