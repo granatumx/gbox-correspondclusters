@@ -1,0 +1,36 @@
+id: CorrespondClusters-{VER}
+meta:
+  title: Correspond Clusters {VER}
+  subtitle: >-
+    This gbox provides the ability to correspond clusters between, for example, a clustering algorithm and reference label
+  description: >
+    This gbox provides the ability to correspond clusters between, for example, a clustering algorithm and reference label. Incorrectly clustered cells can be removed. Majority voting is used.
+endpoints:
+  backend:
+    cmd: python ./correspondclusters.py
+    type: docker
+    image: {GBOX}
+frontend:
+  args:
+    - type: checkbox
+      injectInto: remove_cells
+      default: false
+      label: Remove cells that were mislabeled
+      description: > Sometimes cells are not labeled correctly
+  exports:
+    - kind: assay
+      meta: {}
+      extractFrom: Corresponded assay
+    - kind: sampleMeta
+      meta: {}
+      extractFrom: Corresponded labels
+  imports:
+    - kind: assay
+      label: Assay to use
+      injectInto: assay
+    - kind: sampleMeta
+      label: Sample labeling that will be revised to match reference labeling
+      injectInto: groups
+    - kind: sampleMeta
+      label: Reference labeling (possibly uploaded in the sample meta file)
+      injectInto: reflabels
