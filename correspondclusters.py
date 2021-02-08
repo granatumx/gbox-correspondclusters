@@ -34,10 +34,10 @@ def main():
     
     group_relabel = {}
     mislabelled_cells = []
-    for k, v in inv_map:
+    for k, v in inv_map.items():
         vset = set(v)
         label_scores = {}
-        for kref, vref in inv_map_ref:
+        for kref, vref in inv_map_ref.items():
             label_scores[kref] = len(set(vref).intersection(vset))
         group_relabel[k] = min(label_scores, key=label_scores.get)[0]
         mislabelled_cells.append(list(vset.difference(set(inv_map_ref[group_relabel[k]]))))
