@@ -39,7 +39,7 @@ def main():
         label_scores = {}
         for kref, vref in inv_map_ref.items():
             label_scores[kref] = len(set(vref).intersection(vset))
-        group_relabel[k] = max(label_scores, key=label_scores.get)[0]
+        group_relabel[k] = max(label_scores, key=label_scores.get)
         mislabelled_cells.append(list(vset.difference(set(inv_map_ref[group_relabel[k]]))))
 
     if remove_cells:
